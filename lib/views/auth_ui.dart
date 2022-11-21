@@ -59,7 +59,7 @@ class _AuthUiState extends State<AuthUi> with SingleTickerProviderStateMixin {
       ),
       body: TabBarView(
           controller: _controller,
-          children: const [LoginPage(), RegisterPage()]),
+          children: [LoginPage(), const RegisterPage()]),
     );
   }
 }
