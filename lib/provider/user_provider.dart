@@ -5,14 +5,22 @@ import 'package:reqres_fake_api/repository/user_repo.dart';
 import 'package:reqres_fake_api/response/res_get_user.dart';
 
 import '../models/user.dart';
-import '../utils/notifications_utils.dart';
 
 class UserProvider extends ChangeNotifier {
+  UserProvider() {
+    init();
+  }
+
   bool isLoading = false;
+  bool isFailed = false;
   List<User> dataUser = [];
   final UserRepo _repo = UserRepo();
 
-  Future<void> getDaftarUser(BuildContext context, {String? page}) async {
+  void init() async {
+    getDaftarUser(page: "2");
+  }
+
+  Future<void> getDaftarUser({String? page}) async {
     try {
       isLoading = true;
       notifyListeners();
@@ -26,8 +34,8 @@ class UserProvider extends ChangeNotifier {
       log(e.toString());
       isLoading = false;
       notifyListeners();
-      NotificationUtils.showSnackbar(context,
-          message: "Terjadi kesalahan yang tidak diketahui", color: Colors.red);
+      isFailed = true;
+      notifyListeners();
     }
   }
 }

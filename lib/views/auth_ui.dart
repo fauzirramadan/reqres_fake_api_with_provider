@@ -24,36 +24,33 @@ class _AuthUiState extends State<AuthUi> with SingleTickerProviderStateMixin {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(130),
         child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  color: Colors.deepPurple[200],
-                  padding: const EdgeInsets.all(15),
-                  child: const Center(
-                    child: Text(
-                      "WELCOME",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-                    ),
+          child: Column(
+            children: [
+              Container(
+                color: Colors.deepPurple[200],
+                padding: const EdgeInsets.all(15),
+                child: const Center(
+                  child: Text(
+                    "WELCOME",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                   ),
                 ),
-                TabBar(
-                    labelColor: Colors.purple,
-                    unselectedLabelColor: Colors.grey,
-                    controller: _controller,
-                    tabs: const [
-                      Tab(
-                        text: "LOGIN",
-                        icon: Icon(Icons.login_outlined),
-                      ),
-                      Tab(
-                        text: "REGISTER",
-                        icon: Icon(Icons.app_registration),
-                      )
-                    ]),
-              ],
-            ),
+              ),
+              TabBar(
+                  labelColor: Colors.purple,
+                  unselectedLabelColor: Colors.grey,
+                  controller: _controller,
+                  tabs: const [
+                    Tab(
+                      text: "LOGIN",
+                      icon: Icon(Icons.login_outlined),
+                    ),
+                    Tab(
+                      text: "REGISTER",
+                      icon: Icon(Icons.app_registration),
+                    )
+                  ]),
+            ],
           ),
         ),
       ),
