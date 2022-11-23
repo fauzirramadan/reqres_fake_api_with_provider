@@ -7,6 +7,7 @@ import 'package:reqres_fake_api/utils/nav_utils.dart';
 import 'package:reqres_fake_api/utils/session_manager.dart';
 import 'package:reqres_fake_api/views/auth_ui.dart';
 import 'package:reqres_fake_api/widgets/loading_view.dart';
+import 'package:reqres_fake_api/widgets/primary_button.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -47,6 +48,7 @@ class HomePage extends StatelessWidget {
                           itemBuilder: (context, index) {
                             var data = bloc.dataUser[index];
                             return Container(
+                              padding: const EdgeInsets.only(bottom: 10),
                               decoration: BoxDecoration(
                                   color: Colors.indigo[200],
                                   borderRadius: BorderRadius.circular(12)),
@@ -70,7 +72,14 @@ class HomePage extends StatelessWidget {
                                         fontWeight: FontWeight.w700),
                                   ),
                                   Text(data.firstName ?? "error"),
-                                  const SizedBox(height: 10),
+                                  const SizedBox(
+                                    height: 8,
+                                  ),
+                                  PrimaryButton(
+                                    onTap: () {},
+                                    child: "HAPUS",
+                                    color: Colors.red,
+                                  )
                                 ],
                               ),
                             );
