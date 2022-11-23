@@ -18,9 +18,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   bool? isLogin;
 
-  @override
-  void initState() {
-    SessionManager.getToken().then((value) {
+  Future cekSession() {
+    return SessionManager.getToken().then((value) {
       if (value != null) {
         setState(() {
           isLogin = true;
@@ -31,6 +30,11 @@ class _MyAppState extends State<MyApp> {
         });
       }
     });
+  }
+
+  @override
+  void initState() {
+    cekSession();
     super.initState();
   }
 
