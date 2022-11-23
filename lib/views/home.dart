@@ -1,6 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:reqres_fake_api/provider/user_provider.dart';
+import 'package:reqres_fake_api/utils/nav_utils.dart';
+import 'package:reqres_fake_api/utils/session_manager.dart';
+import 'package:reqres_fake_api/views/auth_ui.dart';
 import 'package:reqres_fake_api/widgets/loading_view.dart';
 
 class HomePage extends StatelessWidget {
@@ -13,6 +18,14 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Home"),
+          actions: [
+            IconButton(
+                onPressed: () async {
+                  await SessionManager.removeToken();
+                  Nav.toAll(context, page: const AuthUi());
+                },
+                icon: const Icon(Icons.exit_to_app_outlined))
+          ],
         ),
         body: Consumer<UserProvider>(builder: (context, bloc, _) {
           return bloc.isLoading

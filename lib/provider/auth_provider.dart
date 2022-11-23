@@ -9,6 +9,7 @@ import 'package:reqres_fake_api/response/res_login.dart';
 import 'package:reqres_fake_api/response/res_register.dart';
 import 'package:reqres_fake_api/utils/nav_utils.dart';
 import 'package:reqres_fake_api/utils/notifications_utils.dart';
+import 'package:reqres_fake_api/utils/session_manager.dart';
 import 'package:reqres_fake_api/views/home.dart';
 
 class AuthProvider extends ChangeNotifier {
@@ -27,6 +28,7 @@ class AuthProvider extends ChangeNotifier {
 
       if (res!.token != null) {
         dataLogin = res;
+        await SessionManager.saveToken(token: dataLogin!.token.toString());
         log(dataLogin!.token.toString());
         isLoading = false;
         notifyListeners();
