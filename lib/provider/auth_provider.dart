@@ -2,7 +2,6 @@
 
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:reqres_fake_api/repository/auth_repo.dart';
 import 'package:reqres_fake_api/response/res_login.dart';
@@ -32,22 +31,22 @@ class AuthProvider extends ChangeNotifier {
         log(dataLogin!.token.toString());
         isLoading = false;
         notifyListeners();
-        NotificationUtils.showSnackbar(context,
-            message: "LOGIN BERHASIL", color: Colors.green);
-        Nav.toAll(context, page: const HomePage());
+        NotificationUtils.showSnackbar("LOGIN BERHASIL",
+            backgroundColor: Colors.green);
+        Nav.toAll(const HomePage());
       } else {
         log(res.token.toString());
         isLoading = false;
         notifyListeners();
-        NotificationUtils.showSnackbar(context,
-            message: "GAGAL LOGIN", color: Colors.red);
+        NotificationUtils.showSnackbar("GAGAL LOGIN",
+            backgroundColor: Colors.red);
       }
     } catch (e) {
       log(e.toString());
       isLoading = false;
       notifyListeners();
-      NotificationUtils.showSnackbar(context,
-          message: "Terjadi kesalahan yang tidak diketahui", color: Colors.red);
+      NotificationUtils.showSnackbar("Terjadi kesalahan yang tidak diketahui",
+          backgroundColor: Colors.red);
     }
   }
 
@@ -62,22 +61,22 @@ class AuthProvider extends ChangeNotifier {
         dataRegister = res;
         isLoading = false;
         notifyListeners();
-        NotificationUtils.showSnackbar(context,
-            message: "REGISTER BERHASIL SILAHKAN LOGIN TERLEBIH DAHULU",
-            color: Colors.green);
+        NotificationUtils.showSnackbar(
+            "REGISTER BERHASIL SILAHKAN LOGIN TERLEBIH DAHULU",
+            backgroundColor: Colors.green);
       } else {
         log(res.toString());
         isLoading = false;
         notifyListeners();
-        NotificationUtils.showSnackbar(context,
-            message: "GAGAL REGISTER", color: Colors.red);
+        NotificationUtils.showSnackbar("GAGAL REGISTER",
+            backgroundColor: Colors.red);
       }
     } catch (e) {
       log(e.toString());
       isLoading = false;
       notifyListeners();
-      NotificationUtils.showSnackbar(context,
-          message: "Terjadi kesalahan yang tidak diketahui", color: Colors.red);
+      NotificationUtils.showSnackbar("Terjadi kesalahan yang tidak diketahui",
+          backgroundColor: Colors.red);
     }
   }
 }

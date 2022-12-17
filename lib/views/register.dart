@@ -42,20 +42,23 @@ class RegisterPage extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                Consumer<AuthProvider>(builder: (context, bloc, _) {
-                  return bloc.isLoading
-                      ? const LoadingView()
-                      : PrimaryButton(
-                          child: "R E G I S T E R",
-                          onTap: () async {
-                            bool isValid = keyForm.currentState!.validate();
-                            if (isValid) {
-                              await bloc.register(context,
-                                  email: emailC.text, password: passwordC.text);
-                            }
-                          },
-                        );
-                })
+                Consumer<AuthProvider>(
+                  builder: (context, bloc, _) {
+                    return bloc.isLoading
+                        ? const LoadingView()
+                        : PrimaryButton(
+                            child: "R E G I S T E R",
+                            onTap: () async {
+                              bool isValid = keyForm.currentState!.validate();
+                              if (isValid) {
+                                await bloc.register(context,
+                                    email: emailC.text,
+                                    password: passwordC.text);
+                              }
+                            },
+                          );
+                  },
+                )
               ],
             ),
           ),

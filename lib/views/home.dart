@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
             IconButton(
                 onPressed: () async {
                   await SessionManager.removeToken();
-                  Nav.toAll(context, page: const AuthUi());
+                  Nav.toAll(const AuthUi());
                 },
                 icon: const Icon(Icons.exit_to_app_outlined))
           ],

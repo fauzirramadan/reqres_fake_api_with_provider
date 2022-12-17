@@ -8,6 +8,9 @@ void main() {
   runApp(const MyApp());
 }
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey = GlobalKey();
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -17,6 +20,8 @@ class MyApp extends StatelessWidget {
       create: (context) => PrefsProvider(),
       child: Consumer<PrefsProvider>(builder: (context, bloc, _) {
         return MaterialApp(
+            navigatorKey: navigatorKey,
+            scaffoldMessengerKey: scaffoldMessengerKey,
             title: 'Fake API with provider',
             theme: ThemeData(
               primarySwatch: Colors.deepPurple,

@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
+import '../main.dart';
+
 class NotificationUtils {
-  static void showSnackbar(BuildContext context,
-      {required String message, Color? color}) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      behavior: SnackBarBehavior.floating,
-      margin: const EdgeInsets.all(10),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      content: Text(message),
-      backgroundColor: color,
-    ));
+  static void showSnackbar(String message,
+      {Color? backgroundColor, SnackBarAction? action}) {
+    scaffoldMessengerKey.currentState?.showSnackBar(
+      SnackBar(
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: backgroundColor,
+        action: action,
+        content: Text(message),
+      ),
+    );
   }
 }

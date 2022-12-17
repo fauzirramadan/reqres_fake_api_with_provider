@@ -1,18 +1,30 @@
 import 'package:flutter/material.dart';
 
+import '../main.dart';
+
 class Nav {
-  static Future<dynamic> to(BuildContext context,
-      {required Widget page}) async {
-    return await Navigator.push(
-        context, MaterialPageRoute(builder: (_) => page));
+  static Future<dynamic> to(Widget page) async {
+    return await navigatorKey.currentState?.push(
+      MaterialPageRoute(
+        builder: (context) {
+          return page;
+        },
+      ),
+    );
   }
 
-  static Future<dynamic> toAll(BuildContext context,
-      {required Widget page}) async {
-    return await Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(builder: (_) => page),
-      (route) => false,
+  static Future<dynamic> toAll(Widget page) async {
+    return await navigatorKey.currentState?.pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (context) {
+          return page;
+        },
+      ),
+      (_) => false,
     );
+  }
+
+  static Future<dynamic> back({dynamic data}) async {
+    return navigatorKey.currentState?.pop(data);
   }
 }
